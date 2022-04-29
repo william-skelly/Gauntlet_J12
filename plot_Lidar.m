@@ -15,7 +15,7 @@ function res = plot_Lidar(Rs, Thetas, phi, robot_x, robot_y)
                         % center of rotation
     %transformation into robot frame of reference (translate)
     R_l = [Rs .* cos(Thetas), Rs .* sin(Thetas), ones(length(Rs), 1)]'; %change to cartisian
-    size(R_l)
+    size(R_l);
     T   = [1,0,-sensor_loc; 0,1,0;0,0,1]; %transformation matrix
     R_n = T * R_l;
     
