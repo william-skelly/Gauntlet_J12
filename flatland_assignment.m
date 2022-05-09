@@ -8,8 +8,8 @@ lambda = .075;
 
 % setup symbolic expressions for the function and gradient
 syms x y;
-f = log(((x-.75)^2 + (y+2.5))^(1/2));
-grad = -gradient(f, [x, y]);
+f = getPotField();
+grad = -gradient(f);
 
 % the problem description tells us to the robot starts at position 1, -1
 % with a heading aligned to the y-axis
@@ -37,7 +37,7 @@ shouldStop = false;
 
 while ~shouldStop
     % get the gradient
-    gradValue = double(subs(grad, {x, y}, {position(1), position(2)}));
+    gradValue = grad(position(1):position(2));
     % calculate the angle to turn to align the robot to the direction of
     % gradValue. There are lots of ways to do this. One way is to use the
     % fact that the magnitude of the cross product of two vectors is equal
@@ -86,7 +86,7 @@ while ~shouldStop
     % update the position for the next iteration
     position = position + gradValue*lambda;
     % if our step is too short, flag it so we break out of our loop
-    shouldStop = forwardDistance < 0.01;
+    shouldStop = forwardDistance > 5;
 end
 
 % stop the robot before exiting
