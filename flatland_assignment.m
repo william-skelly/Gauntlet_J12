@@ -17,7 +17,7 @@ heading = [1; 0];
 position = [0; 0];
 
 angularSpeed = 0.2;  % radians / second (set higher than real to help with testing)
-linearSpeed = 0.05;  % meters / second
+linearSpeed = 0.1;  % meters / second
 
 % get setup with a publisher so we can modulate the velocity
 pub = rospublisher('/raw_vel');
