@@ -119,7 +119,7 @@ function res = getPotField()
     for index = 1:length(BoB_points)
         x_source = BoB_points(index, 1);
         y_source = BoB_points(index, 2);
-        new_sink = make_sink(x_source, y_source, x_space, y_space) * 2/(length(BoB_points));
+        new_sink = make_sink(x_source, y_source, x_space, y_space) * 5/(length(BoB_points));
         z_field = z_field + new_sink;
     end
     
