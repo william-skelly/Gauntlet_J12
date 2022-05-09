@@ -11,10 +11,7 @@ function res = getPotField()
     %%%%%%%%%%%%%%%
     
     %domain limit coordinates (m)
-    x_min = -2;%-1.5;
-    x_max = 3;%2.5;
-    y_min = -4;%-3.37;
-    y_max = 1.5;%1;
+    [x_min; x_max; y_min; y_max] = getLimits()
     
     %create meshgrid
     boundry_step = 0.01; %domain step size (m)
@@ -26,10 +23,11 @@ function res = getPotField()
     % Get Source Points
     %%%%%%%%%%%%%%%%%%%
     
-    top_wall    = pointsFromLine([0;1], [-1.5,-3.37], [-1.5,1]);
-    bottom_wall = pointsFromLine([0;1], [2.5,-3.37], [2.5,1]);
-    left_wall   = pointsFromLine([1;0], [-1.5,-3.37], [2.5,-3.37]);
-    right_wall  = pointsFromLine([1;0], [-1.5,1], [2.5,1]);
+    top_wall      = pointsFromLine([0;1], [-1.5,-3.37], [-1.5,1]);
+    bottom_wall   = pointsFromLine([0;1], [2.5,-3.37], [2.5,1]);
+    left_wall     = pointsFromLine([1;0], [-1.5,-3.37], [2.5,-3.37]);
+    right_wall    = pointsFromLine([1;0], [-1.5,1], [2.5,1]);
+    corner_points = [-1.5, -3.37; -1.5, 1; 2.5, -3.37; 2.5, 1];
     
     %%%%%%%%%%%%%%%%
     % Create Sources
@@ -70,6 +68,15 @@ function res = getPotField()
         y_source = right_wall(index, 2);
         %distToMid = sqrt((x_source - 0.5).^2 + (y_source - 1).^2);
         new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 1/(length(right_wall));
+        z_field = z_field + new_source;
+    end
+    
+    %add to corners
+    for index = 1:length(corner_points)
+        x_source = corner_points(index, 1);
+        y_source = corner_points(index, 2);
+        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) / 4;
+        % magnitude of corners compensates for sinks created by lines
         z_field = z_field + new_source;
     end
     
