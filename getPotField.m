@@ -41,8 +41,8 @@ function res = getPotField()
     for index = 1:length(top_wall)
         x_source = top_wall(index, 1);
         y_source = top_wall(index, 2);
-        distToMid = sqrt((x_source + 1.5).^2 + (y_source + 1).^2);
-        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * distToMid/(length(top_wall));
+        %distToMid = sqrt((x_source + 1.5).^2 + (y_source + 1).^2);
+        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 1/(length(top_wall));
         z_field = z_field + new_source;
     end
     
@@ -50,8 +50,8 @@ function res = getPotField()
     for index = 1:length(bottom_wall)
         x_source = bottom_wall(index, 1);
         y_source = bottom_wall(index, 2);
-        distToMid = sqrt((x_source - 2.5).^2 + (y_source + 1).^2);
-        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * distToMid/(length(bottom_wall));
+        %distToMid = sqrt((x_source - 2.5).^2 + (y_source + 1).^2);
+        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 1/(length(bottom_wall));
         z_field = z_field + new_source;
     end
     
@@ -59,8 +59,8 @@ function res = getPotField()
     for index = 1:length(left_wall)
         x_source = left_wall(index, 1);
         y_source = left_wall(index, 2);
-        distToMid = sqrt((x_source - 0.5).^2 + (y_source + 3.37).^2);
-        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * distToMid/(length(left_wall));
+        %distToMid = sqrt((x_source - 0.5).^2 + (y_source + 3.37).^2);
+        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 1/(length(left_wall));
         z_field = z_field + new_source;
     end
     
@@ -68,8 +68,8 @@ function res = getPotField()
     for index = 1:length(right_wall)
         x_source = right_wall(index, 1);
         y_source = right_wall(index, 2);
-        distToMid = sqrt((x_source - 0.5).^2 + (y_source + ).^2);
-        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * distToMid/(length(right_wall));
+        %distToMid = sqrt((x_source - 0.5).^2 + (y_source - 1).^2);
+        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 1/(length(right_wall));
         z_field = z_field + new_source;
     end
     
