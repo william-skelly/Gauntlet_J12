@@ -114,12 +114,12 @@ function res = getPotField()
     % Add Sink for BoB
     %%%%%%%%%%%%%%%%%%
     
-    BoB_points = pointsFromCircle([.75,-2.5], .25)
+    BoB_points = pointsFromCircle([.75,-2.5], .25);
     
     for index = 1:length(BoB_points)
         x_source = BoB_points(index, 1);
         y_source = BoB_points(index, 2);
-        new_sink = make_sink(x_source, y_source, x_space, y_space);
+        new_sink = make_sink(x_source, y_source, x_space, y_space) * 1/(length(BoB_points));
         z_field = z_field + new_sink;
     end
     
@@ -129,6 +129,8 @@ function res = getPotField()
     
     s = surf(x_space,y_space,z_field, 'FaceAlpha', 0.5);
     s.EdgeColor = 'none';
+    figure
+    contour(x_space,y_space,z_field)
     
     res = z_field; %return
 end
