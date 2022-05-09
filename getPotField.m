@@ -79,7 +79,7 @@ function res = getPotField()
         x_source = box1_points(index, 1);
         y_source = box1_points(index, 2);
         %distToMid = sqrt((x_source - 0.5).^2 + (y_source - 1).^2);
-        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 1/(length(box1_points));
+        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 2/(length(box1_points));
         z_field = z_field + new_source;
     end
     
@@ -88,7 +88,7 @@ function res = getPotField()
         x_source = box2_points(index, 1);
         y_source = box2_points(index, 2);
         %distToMid = sqrt((x_source - 0.5).^2 + (y_source - 1).^2);
-        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 1/(length(box2_points));
+        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 2/(length(box2_points));
         z_field = z_field + new_source;
     end
     
@@ -97,7 +97,7 @@ function res = getPotField()
         x_source = box3_points(index, 1);
         y_source = box3_points(index, 2);
         %distToMid = sqrt((x_source - 0.5).^2 + (y_source - 1).^2);
-        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 1/(length(box3_points));
+        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 2/(length(box3_points));
         z_field = z_field + new_source;
     end
     
