@@ -11,12 +11,12 @@ function res = getPotField()
     %%%%%%%%%%%%%%%
     
     %domain limit coordinates (m)
-    [x_min; x_max; y_min; y_max] = getLimits()
+    domainLimits = getLimits();
     
     %create meshgrid
     boundry_step = 0.01; %domain step size (m)
-    x_boundry = x_min:boundry_step:x_max;
-    y_boundry = y_min:boundry_step:y_max;
+    x_boundry = domainLimits(1):boundry_step:domainLimits(2);
+    y_boundry = domainLimits(3):boundry_step:domainLimits(4);
     [x_space, y_space] = meshgrid(x_boundry, y_boundry);
     
     %%%%%%%%%%%%%%%%%%%
