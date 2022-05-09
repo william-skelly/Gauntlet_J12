@@ -28,7 +28,7 @@ function res = getPotField()
     left_wall     = pointsFromLine([1;0], [-1.5,-3.37], [2.5,-3.37]);
     right_wall    = pointsFromLine([1;0], [-1.5,1], [2.5,1]);
     corner_points = [-1.5, -3.37; -1.5, 1; 2.5, -3.37; 2.5, 1];
-    box1_points   = pointsFromSquare(pi/4, 0.5, [0.25; -1]);
+    box1_points   = pointsFromSquare(pi/4, 0.5, [-0.25; -1]);
     box2_points   = pointsFromSquare(pi/4, 0.5, [1; -0.7]);
     box3_points   = pointsFromSquare(0, 0.5, [1.41; -2]);
     
@@ -43,7 +43,7 @@ function res = getPotField()
         x_source = top_wall(index, 1);
         y_source = top_wall(index, 2);
         %distToMid = sqrt((x_source + 1.5).^2 + (y_source + 1).^2);
-        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 1/(length(top_wall));
+        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 1.2/(length(top_wall));
         z_field = z_field + new_source;
     end
     
@@ -97,7 +97,7 @@ function res = getPotField()
         x_source = box3_points(index, 1);
         y_source = box3_points(index, 2);
         %distToMid = sqrt((x_source - 0.5).^2 + (y_source - 1).^2);
-        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 0.5/(length(box3_points));
+        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 1/(length(box3_points));
         z_field = z_field + new_source;
     end
     
@@ -119,7 +119,7 @@ function res = getPotField()
     for index = 1:length(BoB_points)
         x_source = BoB_points(index, 1);
         y_source = BoB_points(index, 2);
-        new_sink = make_sink(x_source, y_source, x_space, y_space) * 1/(length(BoB_points));
+        new_sink = make_sink(x_source, y_source, x_space, y_space) * 2/(length(BoB_points));
         z_field = z_field + new_sink;
     end
     
