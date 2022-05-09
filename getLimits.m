@@ -10,6 +10,7 @@ function res = getLimits()
     x_max = 3;%2.5;
     y_min = -4;%-3.37;
     y_max = 1.5;%1;
+    limit = 0.01;
 
-    res = [x_min; x_max; y_min; y_max];
+    res = [x_min; x_max; y_min; y_max; limit];
 end
