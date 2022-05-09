@@ -37,7 +37,7 @@ shouldStop = false;
 
 while ~shouldStop
     % get the gradient
-    gradValue = grad(position(1):position(2));
+    gradValue = grad(GradientPos(1), GradientPos(2));
     % calculate the angle to turn to align the robot to the direction of
     % gradValue. There are lots of ways to do this. One way is to use the
     % fact that the magnitude of the cross product of two vectors is equal
