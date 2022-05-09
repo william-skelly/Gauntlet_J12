@@ -4,16 +4,16 @@ function position = flatland_assignment()
 wheelBase = 0.235;              % meters
 % this is the scaling factor we apply to the gradient when calculating our
 % step size
-lambda = .075;
+lambda = 1.0;
 
 % setup symbolic expressions for the function and gradient
 syms x y;
-f = log(((x-.75)^2 + (y+2.5))^(1/2));
+f = l0(((x-.75)^2 + (y+2.5))^(1/2));
 grad = -gradient(f, [x, y]);
 
 % the problem description tells us to the robot starts at position 1, -1
 % with a heading aligned to the y-axis
-heading = [1; 0];
+heading = [0; 1];
 position = [0; 0];
 
 angularSpeed = 0.2;  % radians / second (set higher than real to help with testing)
