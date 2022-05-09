@@ -7,10 +7,10 @@ wheelBase = 0.235;              % meters
 lambda = .075;
 
 % setup symbolic expressions for the function and gradient
-syms x y;
 f = getPotField();
-grad = -gradient(f);
-
+[px,py] = gradient(f);
+px = -1.*px;
+py = -1.*py;
 % the problem description tells us to the robot starts at position 1, -1
 % with a heading aligned to the y-axis
 heading = [1; 0];
@@ -36,8 +36,9 @@ pause(2);
 shouldStop = false;
 
 while ~shouldStop
-    % get the gradient
-    gradValue = grad(position(1):position(2));
+    % get the gradient0
+    gradPos = GradientPos(position(1),position(2));
+    gradValue = [px(gradPos(1)); py(gradPos(2))];
     % calculate the angle to turn to align the robot to the direction of
     % gradValue. There are lots of ways to do this. One way is to use the
     % fact that the magnitude of the cross product of two vectors is equal
