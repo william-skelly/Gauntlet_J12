@@ -4,7 +4,7 @@ function position = flatland_assignment()
 wheelBase = 0.235;              % meters
 % this is the scaling factor we apply to the gradient when calculating our
 % step size
-lambda = .075;
+lambda = .05;
 
 % setup symbolic expressions for the function and gradient
 f = getPotField();
@@ -17,7 +17,7 @@ heading = [1; 0];
 position = [0; 0];
 
 angularSpeed = 0.2;  % radians / second (set higher than real to help with testing)
-linearSpeed = 0.75;  % meters / second
+linearSpeed = 0.05;  % meters / second
 
 % get setup with a publisher so we can modulate the velocity
 pub = rospublisher('/raw_vel');
