@@ -27,7 +27,7 @@ scatter(map5(1,:), map5(2,:));
 scatter(map6(1,:), map6(2,:));
 scatter(map7(1,:), map7(2,:));
 hold off 
-xlabel("x-axis (m)")
-ylabel("y-axis (m)")
+xlabel("î_G (m)")
+ylabel("ĵ_G (m)")
 title("Map of Gauntlet")
 axis equal

@@ -34,7 +34,7 @@ ylim([domainLimits(3) domainLimits(4)])
 for row=1:length(new_dX(:, 1))
     for col = 1:length(new_dX(1, :))
         if abs(new_dY(row, col))*scale < threshold && abs(new_dX(row, col))*scale < threshold
-            quiver(new_x_space(row, col), new_y_space(row, col), new_dX(row, col)*scale, new_dY(row, col)*scale, 'b');
+            quiver(new_x_space(row, col), new_y_space(row, col), new_dX(row, col)*scale, new_dY(row, col)*scale, 'Color', 'b', 'LineWidth', 0.3);
         end
     end
 end
