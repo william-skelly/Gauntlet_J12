@@ -43,7 +43,7 @@ function res = getPotField()
         x_source = top_wall(index, 1);
         y_source = top_wall(index, 2);
         %distToMid = sqrt((x_source + 1.5).^2 + (y_source + 1).^2);
-        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 1.2/(length(top_wall));
+        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 1/(length(top_wall));
         z_field = z_field + new_source;
     end
     
@@ -52,7 +52,7 @@ function res = getPotField()
         x_source = bottom_wall(index, 1);
         y_source = bottom_wall(index, 2);
         %distToMid = sqrt((x_source - 2.5).^2 + (y_source + 1).^2);
-        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 1/(length(bottom_wall));
+        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 5/(length(bottom_wall));
         z_field = z_field + new_source;
     end
     
@@ -70,7 +70,7 @@ function res = getPotField()
         x_source = right_wall(index, 1);
         y_source = right_wall(index, 2);
         %distToMid = sqrt((x_source - 0.5).^2 + (y_source - 1).^2);
-        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 1/(length(right_wall));
+        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 5/(length(right_wall));
         z_field = z_field + new_source;
     end
     
@@ -79,33 +79,39 @@ function res = getPotField()
         x_source = box1_points(index, 1);
         y_source = box1_points(index, 2);
         %distToMid = sqrt((x_source - 0.5).^2 + (y_source - 1).^2);
-        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 2/(length(box1_points));
+        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 3/(length(box1_points));
         z_field = z_field + new_source;
     end
+    new_source = -1 * make_sink(-0.25, -1, x_space, y_space) * 10/(length(box1_points));
+    z_field = z_field + new_source;
     
     %box2
     for index = 1:length(box2_points)
         x_source = box2_points(index, 1);
         y_source = box2_points(index, 2);
         %distToMid = sqrt((x_source - 0.5).^2 + (y_source - 1).^2);
-        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 2/(length(box2_points));
+        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 3/(length(box2_points));
         z_field = z_field + new_source;
     end
+    new_source = -1 * make_sink(1, -0.7, x_space, y_space) * 10/(length(box1_points));
+    z_field = z_field + new_source;
     
     %box3
     for index = 1:length(box3_points)
         x_source = box3_points(index, 1);
         y_source = box3_points(index, 2);
         %distToMid = sqrt((x_source - 0.5).^2 + (y_source - 1).^2);
-        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 2/(length(box3_points));
+        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 3/(length(box3_points));
         z_field = z_field + new_source;
     end
+    new_source = -1 * make_sink(1.41, -2, x_space, y_space) * 5/(length(box1_points));
+    z_field = z_field + new_source;
     
     %corners
     for index = 1:length(corner_points)
         x_source = corner_points(index, 1);
         y_source = corner_points(index, 2);
-        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) / 4;
+        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 1.1;
         % magnitude of corners compensates for sinks created by lines
         z_field = z_field + new_source;
     end
@@ -119,7 +125,7 @@ function res = getPotField()
     for index = 1:length(BoB_points)
         x_source = BoB_points(index, 1);
         y_source = BoB_points(index, 2);
-        new_sink = make_sink(x_source, y_source, x_space, y_space) * 6/(length(BoB_points));
+        new_sink = make_sink(x_source, y_source, x_space, y_space) * 10/(length(BoB_points));
         z_field = z_field + new_sink;
     end
     
@@ -130,7 +136,7 @@ function res = getPotField()
     s = surf(x_space,y_space,z_field, 'FaceAlpha', 0.5);
     s.EdgeColor = 'none';
     figure
-    contour(x_space,y_space,z_field)
+    contour(x_space,y_space,z_field, 100)
     
     res = z_field; %return
 end
