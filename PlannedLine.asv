@@ -1,0 +1,26 @@
+function res = PlannedLine()
+%UNTITLED Summary of this function goes here
+%   Detailed explanation goes here
+f = getPotField();
+[px,py] = gradient(f);
+a = .1;
+px = -1.*px;
+py = -1.*py;
+
+point = GradientPos(1,0);
+
+p = [0;0];
+x = p(1);
+b = zeros(2, 10000);
+for n = 1:10000
+    b(1,n) = p(1);
+    b(2,n) = p(2);
+    gradPos = GradientPos(p(1),p(2));
+    gradValue = [px(gradPos(1)); py(gradPos(2))];
+    p = [p(1)+a*gradValue(1), p(2)+a*gradValue(2)];
+   
+end
+
+res = b;
+end
+

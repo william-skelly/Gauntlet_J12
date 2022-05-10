@@ -1,4 +1,4 @@
-function position = flatland_assignment()
+function a = flatland_assignment()
 % to calculate wheel velocities for a given angular speed we need to know
 % the wheel base of the robot
 wheelBase = 0.235;              % meters
@@ -34,10 +34,10 @@ pause(2);
 
 % set a flag to control when we are sufficiently close to the maximum of f
 shouldStop = false;
-
+a = [];
 while ~shouldStop
     % get the gradient0
-    
+    a = [a; position];
     gradPos = GradientPos(position(1),position(2));
     gradValue = [px(gradPos(1)); py(gradPos(2))];
     % calculate the angle to turn to align the robot to the direction of
