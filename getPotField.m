@@ -79,10 +79,10 @@ function res = getPotField()
         x_source = box1_points(index, 1);
         y_source = box1_points(index, 2);
         %distToMid = sqrt((x_source - 0.5).^2 + (y_source - 1).^2);
-        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 5/(length(box1_points));
+        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 6/(length(box1_points));
         z_field = z_field + new_source;
     end
-    new_source = -1 * make_sink(-0.25, -1, x_space, y_space) * 10/(length(box1_points));
+    new_source = -1 * make_sink(-0.25, -1, x_space, y_space) * 15/(length(box1_points));
     z_field = z_field + new_source;
     
     %box2
@@ -90,7 +90,7 @@ function res = getPotField()
         x_source = box2_points(index, 1);
         y_source = box2_points(index, 2);
         %distToMid = sqrt((x_source - 0.5).^2 + (y_source - 1).^2);
-        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 3/(length(box2_points));
+        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 7/(length(box2_points));
         z_field = z_field + new_source;
     end
     new_source = -1 * make_sink(1, -0.7, x_space, y_space) * 10/(length(box1_points));
@@ -101,7 +101,7 @@ function res = getPotField()
         x_source = box3_points(index, 1);
         y_source = box3_points(index, 2);
         %distToMid = sqrt((x_source - 0.5).^2 + (y_source - 1).^2);
-        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 3/(length(box3_points));
+        new_source = -1 * make_sink(x_source, y_source, x_space, y_space) * 4/(length(box3_points));
         z_field = z_field + new_source;
     end
     new_source = -1 * make_sink(1.41, -2, x_space, y_space) * 5/(length(box1_points));
@@ -130,7 +130,9 @@ function res = getPotField()
     end
     
     %sink to comensate for interferrence between obstacles
-    new_sink = make_sink(0.41, -0.66, x_space, y_space);
+    new_sink = 6*make_sink(0.41, -0.66, x_space, y_space);
+    z_field = z_field + new_sink;
+    new_sink = 6*make_sink(0.41,-.5, x_space, y_space);
     z_field = z_field + new_sink;
     
     %%%%%%%%%%%%%%%%%%%%
