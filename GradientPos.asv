@@ -12,11 +12,10 @@ function res = GradientPos(X,Y)
     xNum = false;
     n = 1;
     while ~xNum
-        if x_boundry(n) == X
-           xNum = true;
+        if x_boundry(n)= X
+            xNum = true;
            Xpos = n;
         end
-        
     	if x_boundry(n)>X
            xNum = true;
            Xpos = n;
@@ -26,17 +25,13 @@ function res = GradientPos(X,Y)
     yNum = false;
     n = 1;
     while ~yNum
-        if y_boundry(n) == Y
-           yNum = true;
-           Ypos = n;
-        end
         if y_boundry(n)>Y
                 yNum = true;
                 Ypos = n;
         end
         n = n+1;
     end
-    res = [Xpos, Ypos];
-    %res = [x_space, y_space];
+    %res = [Xpos, Ypos];
+    res = [x_space, y_space];
 end
 
