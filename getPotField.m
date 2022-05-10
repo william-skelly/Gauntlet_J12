@@ -129,6 +129,10 @@ function res = getPotField()
         z_field = z_field + new_sink;
     end
     
+    %sink to comensate for interferrence between obstacles
+    new_sink = make_sink(0.41, -0.66, x_space, y_space);
+    z_field = z_field + new_sink;
+    
     %%%%%%%%%%%%%%%%%%%%
     % Display and return
     %%%%%%%%%%%%%%%%%%%%
