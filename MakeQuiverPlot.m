@@ -1,7 +1,7 @@
 function [DX,DY] = MakeQuiverPlot()
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
-scale = 0.05;
+scale = 0.003;
 threshold = 0.25;
 Z = getPotField;
 %domain limit coordinates (m)
@@ -29,6 +29,7 @@ clf
 hold on
 xlim([domainLimits(1) domainLimits(2)])
 ylim([domainLimits(3) domainLimits(4)])
+axis equal
 
 % Plot all the vectors
 for row=1:length(new_dX(:, 1))

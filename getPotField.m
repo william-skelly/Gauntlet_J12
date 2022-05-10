@@ -142,7 +142,11 @@ function res = getPotField()
     s = surf(x_space,y_space,z_field, 'FaceAlpha', 0.5);
     s.EdgeColor = 'none';
     figure
-    contour(x_space,y_space,z_field, 100)
+    contour(x_space,y_space,z_field, 400)
+    title('Contour Plot of Potential Field')
+    xlabel("î_G (m)")
+    ylabel("ĵ_G (m)")
+    axis equal
     
     res = z_field; %return
 end
