@@ -9,7 +9,7 @@
 
 function res = pointsFromLine(slope_vector, start_point, end_point)
     % initialize paramers
-    u_step    = 0.01; %the step size for the parameter u
+    u_step    = 0.1; %the step size for the parameter u
     u_initial = 0; %the line is parametrized such that the start is at u=0
     u_final   = (end_point(1) - start_point(1)) / slope_vector(1); %the 
         %value of the parameter that corresponds to the end of the line
