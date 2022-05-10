@@ -14,6 +14,7 @@ function res = gradPathPlot()
     [px,py] = gradient(f);
     px = -1.*px;
     py = -1.*py;
+    
     % the problem description tells us to the robot starts at position 0,0
     position = [0; 0];
 
@@ -31,7 +32,7 @@ function res = gradPathPlot()
         positionData(index,:) = position;
         % if our step is too short, flag it so we break out of our loop
         shouldStop = index > 10000;
-        index = index + 1
+        index = index + 1;
     end
     
     res = positionData;
