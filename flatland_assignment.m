@@ -37,6 +37,7 @@ shouldStop = false;
 
 while ~shouldStop
     % get the gradient0
+    
     gradPos = GradientPos(position(1),position(2));
     gradValue = [px(gradPos(1)); py(gradPos(2))];
     % calculate the angle to turn to align the robot to the direction of
