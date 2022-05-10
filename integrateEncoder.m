@@ -43,7 +43,7 @@ function res = integrateEncoder()
     xlabel('x-axis of robot plane (m)');
     ylabel('y-axis of robot plane (m)');
     title('Robot Path Plot');
-    subtitle({['Visualizing the parametric curve versus the actual path that the '], ...
+    subtitle({['Visualizing the actual path that the '], ...
         'NEATO took in the simulator'});
     grid on
 end
