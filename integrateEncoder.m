@@ -5,7 +5,7 @@
 function res = integrateEncoder()
     wheel_base = 0.235; %(m)
     measured_data = table2array(readtable("encoderData(5).csv"));
-    measured_time                  = (measured_data(:,1) - 9257);
+    measured_time                  = (measured_data(:,1) - measured_data(1,1));
     measured_time                  = measured_time(63:1:end-30);
     left_wheel_position            = (measured_data(:,2)- 2155);
     left_wheel_position            = left_wheel_position(63:1:end-30);
@@ -23,6 +23,7 @@ function res = integrateEncoder()
     angle_initial     = [1,0];
     position_measured = position_initial;
     angle_measured     = angle_initial;
+    total_distance = 0;
     for index = 1:length(measured_linear_speed)
         %calculate deltas for x,y, and angle
         t_delta     = measured_time(index + 1) - measured_time(index);
@@ -34,6 +35,9 @@ function res = integrateEncoder()
         position_measured(1, index + 1) = position_measured(1,index) + x_delta;
         position_measured(2, index + 1) = position_measured(2,index) + y_delta;
         angle_measured(index + 1)       = angle_measured(index) + delta_theta;
+        
+        %update total distance
+        total_distance = total_distance + sqrt(x_delta^2 + y_delta^2);
     end
 
     % quiver(curve_i,curve_j,left_wheel_position(1:length(left_wheel_position) - 1)',...
