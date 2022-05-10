@@ -72,7 +72,5 @@ function res = plotPathOnMap()
     %     right_wheel_position(1:length(right_wheel_position) - 1)','red');
     plot(-position_measured(2,:),-position_measured(1,:),'red');
     axis equal
-    xlabel('x-axis of robot plane (m)');
-    ylabel('y-axis of robot plane (m)');
     grid on
 end
